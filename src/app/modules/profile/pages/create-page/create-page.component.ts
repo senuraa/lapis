@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../../../shared/models/User";
+import {ProfileService} from "../../profile.service";
 
 @Component({
   selector: 'app-create-page',
@@ -15,7 +16,8 @@ export class CreatePageComponent implements OnInit {
   };
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  onSubmit(formData:User,service:ProfileService){
+    service.setProfileInfo(formData)
   }
-
 }

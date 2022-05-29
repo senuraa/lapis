@@ -8,6 +8,7 @@ import {RouterModule} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import {ProfileModule} from "./modules/profile/profile.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {ProfileService} from "./modules/profile/profile.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
