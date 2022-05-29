@@ -13,16 +13,7 @@ import {ProfileService} from "../../profile.service";
 })
 export class ProfileFormComponent implements OnInit {
   faCalendar = faCalendar
-  @Input() userData: User = {
-    name: '',
-    email: '',
-    dob: {
-      year: 1970,
-      month: 1,
-      day: 1
-    },
-    location: ''
-  }
+  @Input() userData: User | undefined
   @Input() submitForm: ((formData: any, service:ProfileService) => void) | undefined
 
   model: NgbDateStruct | undefined;
@@ -32,10 +23,10 @@ export class ProfileFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: [null, [Validators.required, Validators.minLength(2)]],
-      email: [null, [Validators.email, Validators.required]],
-      dob: [null, [Validators.required]],
-      location: []
+      name: [this.userData?.name, [Validators.required, Validators.minLength(2)]],
+      email: [this.userData?.email, [Validators.email, Validators.required]],
+      dob: [this.userData?.dob, [Validators.required]],
+      location: [this.userData?.location]
     })
   }
   onSubmit():void {

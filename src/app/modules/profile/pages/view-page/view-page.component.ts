@@ -32,4 +32,8 @@ export class ViewPageComponent implements OnInit {
     this.router.navigate(['/create'],{})
   }
 
+  onEditClick(): void{
+    this.router.navigate(['/edit'])
+  }
+
 }
