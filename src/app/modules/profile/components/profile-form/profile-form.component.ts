@@ -34,4 +34,7 @@ export class ProfileFormComponent implements OnInit {
       this.submitForm(this.form.value, this.profileService)
     }
   }
+  onViewClick():void{
+    this.router.navigate(['/view'])
+  }
 }
