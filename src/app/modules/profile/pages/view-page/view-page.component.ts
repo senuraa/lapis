@@ -9,6 +9,9 @@ import {User} from "../../../../shared/models/User";
 })
 export class ViewPageComponent implements OnInit {
   userData: User | undefined;
+  userName: string | undefined;
+  dob: string | undefined;
+  email: string | undefined;
 
   constructor(private profileService: ProfileService) {
   }
@@ -16,7 +19,9 @@ export class ViewPageComponent implements OnInit {
   ngOnInit(): void {
     this.profileService.getProfileInfo().subscribe(res => {
       this.userData = res
-      console.log(res)
+      this.userName = res.name
+      this.dob = res.dob
+      this.email = res.email
     })
   }
 
