@@ -1,7 +1,7 @@
 import {Routes} from "@angular/router";
-import {ViewComponent} from "./profile/view/view.component";
-import {EditComponent} from "./profile/edit/edit.component";
-import {CreateComponent} from "./profile/create/create.component";
+import {ViewPageComponent} from "./modules/profile/pages/view-page/view-page.component";
+import {EditPageComponent} from "./modules/profile/pages/edit-page/edit-page.component";
+import {CreatePageComponent} from "./modules/profile/pages/create-page/create-page.component";
 
 export const AppRoutes: Routes = [
   {
@@ -11,14 +11,14 @@ export const AppRoutes: Routes = [
   },
   {
     path: 'view',
-    component: ViewComponent
+    component: ViewPageComponent
   },
   {
     path: 'edit',
-    component: EditComponent
+    component: EditPageComponent
   },
   {
     path: 'create',
-    component: CreateComponent
+    component: CreatePageComponent
   }
 ]
