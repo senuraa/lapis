@@ -11,7 +11,11 @@ export class CreatePageComponent implements OnInit {
   user: User = {
     name: '',
     location: '',
-    dob: '',
+    dob: {
+      year: 1970,
+      month: 1,
+      day: 1
+    },
     email: ''
   };
   constructor() { }

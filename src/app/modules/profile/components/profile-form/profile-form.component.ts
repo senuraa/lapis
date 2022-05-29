@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../../../shared/models/User";
 import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ProfileService} from "../../profile.service";
 
@@ -16,25 +16,31 @@ export class ProfileFormComponent implements OnInit {
   @Input() userData: User = {
     name: '',
     email: '',
-    dob: '',
+    dob: {
+      year: 1970,
+      month: 1,
+      day: 1
+    },
     location: ''
   }
   @Input() submitForm: ((formData: any, service:ProfileService) => void) | undefined
 
   model: NgbDateStruct | undefined;
-  profileForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    dob: new FormControl(''),
-    location: new FormControl('')
-  })
-  constructor(private router:Router, private profileService:ProfileService) { }
+  form!: FormGroup;
+
+  constructor(private router:Router, private profileService:ProfileService, private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      name: [null, [Validators.required, Validators.minLength(2)]],
+      email: [null, [Validators.email, Validators.required]],
+      dob: [null, [Validators.required]],
+      location: []
+    })
   }
   onSubmit():void {
-    if (this.submitForm) {
-      this.submitForm(this.profileForm.value, this.profileService)
+    if (this.submitForm && this.form) {
+      this.submitForm(this.form.value, this.profileService)
     }
   }
 }

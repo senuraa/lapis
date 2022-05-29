@@ -13,6 +13,7 @@ export class ViewPageComponent implements OnInit {
   userName: string | undefined;
   dob: string | undefined;
   email: string | undefined;
+  location: string | undefined;
   isProfileAvail: boolean = false;
   constructor(private profileService: ProfileService, private router:Router) {
   }
@@ -22,8 +23,9 @@ export class ViewPageComponent implements OnInit {
       if(res)this.isProfileAvail = true
       this.userData = res
       this.userName = res.name
-      this.dob = res.dob
+      this.dob = `${res.dob.year}-${res.dob.month}-${res.dob.day}`
       this.email = res.email
+      this.location = res.location
     })
   }
   onCreate():void{
