@@ -6,9 +6,7 @@ import {User} from "../../shared/models/User";
   providedIn: 'root'
 })
 export class ProfileService {
-  private profileInfo = new BehaviorSubject<User>({
-    name: "", dob: "", email: "", location: ""
-  })
+  private profileInfo = new BehaviorSubject<any>(null)
   constructor() { }
 
   getProfileInfo():Observable<User>{
