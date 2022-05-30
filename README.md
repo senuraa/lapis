@@ -1,6 +1,15 @@
-# Lapis
+# Lapis My Profile
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+My profile page of the Lapis dashboard
+
+## Description
+
+Technical task developed for Lapis using angular 13. This lets the user create a profile if not created, edit the profile and view the profile.
+
+## Getting Started
+
+### Dependencies
+* Node 14
 
 ## Development server
 
@@ -14,13 +23,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Authors
+* Senura Seneviratne
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Version History
+* 0.1 
+  * Initial release
 
 ## Further help
 
