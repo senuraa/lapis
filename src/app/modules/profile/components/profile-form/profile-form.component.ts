@@ -29,7 +29,6 @@ export class ProfileFormComponent implements OnInit {
       dob: [this.userData?.dob, [Validators.required]],
       location: [this.selectedLocation]
     })
-    console.log('previous location ->',this.selectedLocation)
   }
   onSubmit():void {
     if (this.submitForm && this.form && this.selectedLocation) {
