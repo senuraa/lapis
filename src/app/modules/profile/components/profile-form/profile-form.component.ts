@@ -17,18 +17,19 @@ export class ProfileFormComponent implements OnInit {
   form!: FormGroup;
   selectedLocation: google.maps.LatLngLiteral | undefined
   constructor(private router:Router, private profileService:ProfileService, private formBuilder:FormBuilder) {
-    if(this.userData){
-      this.selectedLocation = this.userData.location
-    }
   }
 
   ngOnInit(): void {
+    if(this.userData){
+      this.selectedLocation = this.userData.location
+    }
     this.form = this.formBuilder.group({
       name: [this.userData?.name, [Validators.required, Validators.minLength(2)]],
       email: [this.userData?.email, [Validators.email, Validators.required]],
       dob: [this.userData?.dob, [Validators.required]],
       location: [this.selectedLocation]
     })
+    console.log('previous location ->',this.selectedLocation)
   }
   onSubmit():void {
     if (this.submitForm && this.form && this.selectedLocation) {

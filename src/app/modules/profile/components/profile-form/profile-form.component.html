@@ -26,7 +26,7 @@
     </div>
     <div class="col-12 mx-auto mt-3">
         <label>Please move the marker to select your preferred location</label>
-        <app-google-maps (location)="onLocationUpdate($event)" [previousLocation]="selectedLocation"></app-google-maps>
+        <app-google-maps (location)="onLocationUpdate($event)" [prevLocation]="selectedLocation"></app-google-maps>
     </div>
     <div class="pt-3 text-center">
       <button type="submit" class="btn btn-primary mx-2" [disabled]="!form.valid">Save</button>

@@ -9,7 +9,7 @@ import {environment} from "../../../environments/environment";
   styleUrls: ['./google-maps.component.scss']
 })
 export class GoogleMapsComponent implements OnInit {
-  @Input() previousLocation: google.maps.LatLngLiteral | undefined;
+  @Input() prevLocation: google.maps.LatLngLiteral | undefined;
   @Output() location = new EventEmitter<google.maps.LatLngLiteral>()
   apiLoaded: Observable<boolean>;
   map: google.maps.Map | undefined;
@@ -31,7 +31,7 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (navigator.geolocation && !this.previousLocation) {
+    if (navigator.geolocation && !this.prevLocation) {
       navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
           this.center = {
             lat: position.coords.latitude,
@@ -41,8 +41,11 @@ export class GoogleMapsComponent implements OnInit {
           this.location.emit(this.center)
         }, undefined, undefined
       )
-    }else if(this.previousLocation){
-      this.markerPosition = this.previousLocation
+    }else if(this.prevLocation){
+      this.center = this.prevLocation
+      this.markerPosition = this.prevLocation
+      console.log('marker position ->', this.markerPosition)
+      this.location.emit(this.prevLocation)
     }
   }
 
