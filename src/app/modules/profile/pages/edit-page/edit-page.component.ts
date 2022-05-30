@@ -15,7 +15,10 @@ export class EditPageComponent implements OnInit {
       day: 1
     },
     email: "",
-    location: "",
+    location: {
+      lat: 0,
+      lng: 0
+    },
     name: ""
 
   };

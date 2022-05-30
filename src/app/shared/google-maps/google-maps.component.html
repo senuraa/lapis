@@ -1,0 +1,5 @@
+<div *ngIf="apiLoaded | async">
+  <google-map [center]="center" width="100%">
+    <map-marker [position]="markerPosition" [options]="markerOptions" (mapDragend)="onMarkerPositionChange($event)"></map-marker>
+  </google-map>
+</div>

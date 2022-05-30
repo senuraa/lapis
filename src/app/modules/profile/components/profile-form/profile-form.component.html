@@ -8,8 +8,8 @@
       <div class="form-group pt-3">
         <label for="inputDob">Date of birth</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd"
-                 name="dob" id="inputDob" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" formControlName="dob" required>
+          <input class="form-control" placeholder="yyyy-mm-dd" type="date"
+                 name="dob" id="inputDob" ngbDatepicker #d="ngbDatepicker" formControlName="dob" required>
           <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
             <fa-icon [icon]="faCalendar"></fa-icon>
             <i class="fa-solid fa-calendar"></i>
@@ -23,6 +23,10 @@
         <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email" required>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
+    </div>
+    <div class="col-12 mx-auto mt-3">
+        <label>Please move the marker to select your preferred location</label>
+        <app-google-maps (location)="onLocationUpdate($event)" [previousLocation]="selectedLocation"></app-google-maps>
     </div>
     <div class="pt-3 text-center">
       <button type="submit" class="btn btn-primary mx-2" [disabled]="!form.valid">Save</button>

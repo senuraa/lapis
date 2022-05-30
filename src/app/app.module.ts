@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {ProfileModule} from "./modules/profile/profile.module";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {ProfileService} from "./modules/profile/profile.service";
+import {HttpClientJsonpModule, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import {ProfileService} from "./modules/profile/profile.service";
     RouterModule,
     ProfileModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   providers: [
     ProfileService

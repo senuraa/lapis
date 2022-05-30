@@ -4,5 +4,5 @@ export interface User{
   name: string;
   email: string;
   dob: NgbDateStruct
-  location: string;
+  location: google.maps.LatLngLiteral;
 }

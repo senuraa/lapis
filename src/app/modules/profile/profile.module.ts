@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgbDatepickerModule} from "@ng-bootstrap/ng-bootstrap";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {ProfileService} from "./profile.service";
+import {GoogleMapsComponentModule} from "../../shared/google-maps/google-maps-component.module";
+
 
 
 @NgModule({
@@ -18,11 +20,12 @@ import {ProfileService} from "./profile.service";
     EditPageComponent,
   ],
   imports: [
-        CommonModule,
-        FormsModule,
-        NgbDatepickerModule,
-        FontAwesomeModule,
-        ReactiveFormsModule,
+    CommonModule,
+    FormsModule,
+    NgbDatepickerModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    GoogleMapsComponentModule,
   ],
   providers: [
     ProfileService

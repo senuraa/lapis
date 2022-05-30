@@ -13,7 +13,7 @@ export class ViewPageComponent implements OnInit {
   userName: string | undefined;
   dob: string | undefined;
   email: string | undefined;
-  location: string | undefined;
+  location: google.maps.LatLngLiteral | undefined;
   isProfileAvail: boolean = false;
   constructor(private profileService: ProfileService, private router:Router) {
   }
