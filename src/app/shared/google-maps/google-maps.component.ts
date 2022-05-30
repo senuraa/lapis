@@ -10,6 +10,7 @@ import {environment} from "../../../environments/environment";
 })
 export class GoogleMapsComponent implements OnInit {
   @Input() prevLocation: google.maps.LatLngLiteral | undefined;
+  @Input() isEditable: boolean | undefined
   @Output() location = new EventEmitter<google.maps.LatLngLiteral>()
   apiLoaded: Observable<boolean>;
   map: google.maps.Map | undefined;
@@ -20,7 +21,9 @@ export class GoogleMapsComponent implements OnInit {
   center: google.maps.LatLngLiteral = {
     lat: -25, lng: 134
   }
-  markerOptions: google.maps.MarkerOptions = {draggable: true};
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: true,
+  }
 
   constructor(private httpClient: HttpClient) {
     this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsApiKey}`, 'callback')
@@ -31,6 +34,10 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.markerOptions = {
+      ...this.markerOptions,
+      draggable: this.isEditable
+    }
     if (navigator.geolocation && !this.prevLocation) {
       navigator.geolocation.getCurrentPosition((position: GeolocationPosition) => {
           this.center = {
@@ -44,7 +51,6 @@ export class GoogleMapsComponent implements OnInit {
     }else if(this.prevLocation){
       this.center = this.prevLocation
       this.markerPosition = this.prevLocation
-      console.log('marker position ->', this.markerPosition)
       this.location.emit(this.prevLocation)
     }
   }
