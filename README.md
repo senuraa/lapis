@@ -6,6 +6,8 @@ My profile page of the Lapis dashboard
 
 Technical task developed for Lapis using angular 13. This lets the user create a profile if not created, edit the profile and view the profile.
 
+Demo application can be viewed here - https://lapis-87e77.firebaseapp.com/
+
 ## Getting Started
 
 ### Dependencies
