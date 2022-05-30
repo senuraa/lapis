@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from "../../../../shared/models/User";
-import {NgbDateStruct} from "@ng-bootstrap/ng-bootstrap";
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
@@ -15,26 +14,38 @@ export class ProfileFormComponent implements OnInit {
   faCalendar = faCalendar
   @Input() userData: User | undefined
   @Input() submitForm: ((formData: any, service:ProfileService) => void) | undefined
-
-  model: NgbDateStruct | undefined;
   form!: FormGroup;
-
-  constructor(private router:Router, private profileService:ProfileService, private formBuilder:FormBuilder) { }
+  selectedLocation: google.maps.LatLngLiteral | undefined
+  constructor(private router:Router, private profileService:ProfileService, private formBuilder:FormBuilder) {
+    if(this.userData){
+      this.selectedLocation = this.userData.location
+    }
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: [this.userData?.name, [Validators.required, Validators.minLength(2)]],
       email: [this.userData?.email, [Validators.email, Validators.required]],
       dob: [this.userData?.dob, [Validators.required]],
-      location: [this.userData?.location]
+      location: [this.selectedLocation]
     })
   }
   onSubmit():void {
-    if (this.submitForm && this.form) {
-      this.submitForm(this.form.value, this.profileService)
+    if (this.submitForm && this.form && this.selectedLocation) {
+      const {name, email, dob} = this.form.value as User
+      const submitData: User = {
+        dob: dob,
+        email: email,
+        location: this.selectedLocation,
+        name:name
+      }
+      this.submitForm(submitData, this.profileService)
     }
   }
   onViewClick():void{
     this.router.navigate(['/view'])
+  }
+  onLocationUpdate(location: google.maps.LatLngLiteral): void{
+    this.selectedLocation = location
   }
 }

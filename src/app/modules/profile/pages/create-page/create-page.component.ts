@@ -10,7 +10,10 @@ import {ProfileService} from "../../profile.service";
 export class CreatePageComponent implements OnInit {
   user: User = {
     name: '',
-    location: '',
+    location: {
+      lat: 0,
+      lng: 0
+    },
     dob: {
       year: 1970,
       month: 1,
